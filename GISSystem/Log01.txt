@@ -1,0 +1,93 @@
+; Demo Script 1
+;
+; Specify boundaries of coordinate space:
+world	0794130W	0792630W	381500N	383000N
+
+GIS Program
+
+dbFile:	db01.txt
+script:	.\DemoScript01.txt
+log:	.\Log01.txt
+Quadtree childern are printed in the order SW SE NE NW
+--------------------------------------------------------------------------------
+
+Latitude/longitude values in index entries are shown as signed integers, in total seconds.
+
+World boundaries are set to:
+	      138600
+   -286890		  -285990
+	      137700
+--------------------------------------------------------------------------------
+;
+; Import some data:
+Command 1:	import	VA_MontereySmall.txt
+
+Imported Features by name: 25
+Imported Locations: 25
+Average name length: 12
+--------------------------------------------------------------------------------
+;
+; Check the location indices:
+Command 2:	debug	quad
+
+   *
+   *
+@
+      [(-286392, 138367), 0] [(-286345, 138312), 2343] [(-286353, 138352), 2466] [(-286393, 138370), 3191] 
+      [(-286213, 138302), 122] 
+   @
+      *
+         [(-286329, 138414), 2587] 
+            [(-286301, 138424), 2900] [(-286324, 138413), 3029] 
+            *
+         @
+            [(-286269, 138486), 2061] 
+            [(-286319, 138445), 1906] [(-286321, 138438), 3342] 
+      @
+            [(-286299, 138530), 1379] [(-286316, 138492), 2214] 
+            [(-286231, 138536), 1101, 2743] 
+         @
+            [(-286263, 138580), 1502] 
+            [(-286313, 138576), 949] 
+            *
+            *
+         @
+            [(-286379, 138600), 243] [(-286383, 138597), 371] [(-286342, 138593), 510] [(-286358, 138591), 1754] 
+            [(-286403, 138593), 826] [(-286390, 138593), 1225] [(-286428, 138574), 1625] 
+   [(-286449, 138309), 670] 
+--------------------------------------------------------------------------------
+Command 3:	debug	hash
+
+Number of elements: 25
+Number of slots: 256
+Maximum elements in a slot: 2
+Load limit: 1.0
+
+Slot Contents
+    7: [[West Strait Creek:VA, [3029]]]
+   15: [[New Hampden:VA, [1625]]]
+   39: [[Asbury Church:VA, [0]]]
+   46: [[Elk Run:VA, [949]], [Simmons Run:VA, [2587]]]
+   72: [[Forks of Waters:VA, [1101]]]
+   74: [[Possum Trot:VA, [2214]]]
+   76: [[Central Church:VA, [826]]]
+  106: [[Gulf Mountain:VA, [1502]]]
+  151: [[Barren Rock:VA, [122]], [Seybert Hills:VA, [2466]]]
+  152: [[Blue Grass School (historical):VA, [371]]]
+  158: [[Ginseng Mountain:VA, [1379]]]
+  160: [[Bluegrass Valley:VA, [510]]]
+  163: [[Blue Grass:VA, [243]]]
+  178: [[Strait Creek:VA, [2743]]]
+  188: [[Seybert Chapel:VA, [2343]]]
+  190: [[Key Run:VA, [1754]], [White Run:VA, [3191]]]
+  209: [[Frank Run:VA, [1225]], [Peck Run:VA, [2061]]]
+  229: [[Thorny Bottom Church:VA, [2900]]]
+  237: [[Burners Run:VA, [670]]]
+  239: [[Laurel Run:VA, [1906]]]
+  254: [[Wooden Run:VA, [3342]]]
+;
+; Exit
+Command: 4	quit
+
+Terminating execution of commands.
+--------------------------------------------------------------------------------
